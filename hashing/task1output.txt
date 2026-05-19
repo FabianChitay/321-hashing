@@ -1,0 +1,155 @@
+==============task 1c:===============
+
+
+bits: 8         possible hashes: 256
+QsuQX7W6p has hash d6
+nSv6b7rUP has hash d6
+number of inputs until found: 15
+time until found: 0.000223 seconds
+
+
+bits: 10        possible hashes: 1,024
+a1cHpRMHH has hash 2c3
+qgMRDtdoc has hash 2c3
+number of inputs until found: 25
+time until found: 0.000342 seconds
+
+
+bits: 12        possible hashes: 4,096
+LbnWJ42H2 has hash db5
+atngIk663 has hash db5
+number of inputs until found: 34
+time until found: 0.000401 seconds
+
+
+bits: 14        possible hashes: 16,384
+5ukDsTirk has hash 2cf1
+osqWzx23Z has hash 2cf1
+number of inputs until found: 195
+time until found: 0.002238 seconds
+
+
+bits: 16        possible hashes: 65,536
+X21RDAFRz has hash ebdf
+fPkiYt05g has hash ebdf
+number of inputs until found: 205
+time until found: 0.002291 seconds
+
+
+bits: 18        possible hashes: 262,144
+94Goo6TOF has hash 36172
+qa0to4K7C has hash 36172
+number of inputs until found: 186
+time until found: 0.002129 seconds
+
+
+bits: 20        possible hashes: 1,048,576
+TTJn4c9yk has hash fdd8f
+V8p4dCJkY has hash fdd8f
+number of inputs until found: 610
+time until found: 0.006776 seconds
+
+
+bits: 22        possible hashes: 4,194,304
+sorme1dIx has hash 302638
+Hrq1ZdvfC has hash 302638
+number of inputs until found: 2,742
+time until found: 0.030589 seconds
+
+
+bits: 24        possible hashes: 16,777,216
+9kxYH71dr has hash ffd4b3
+0B91ssILP has hash ffd4b3
+number of inputs until found: 4,010
+time until found: 0.044541 seconds
+
+
+bits: 26        possible hashes: 67,108,864
+eRhmV0O7H has hash 3856bd6
+um15ZJrtZ has hash 3856bd6
+number of inputs until found: 11,594
+time until found: 0.128280 seconds
+
+
+bits: 28        possible hashes: 268,435,456
+B5UCKtbZo has hash f6c543e
+QKRdNiJbb has hash f6c543e
+number of inputs until found: 4,705
+time until found: 0.052605 seconds
+
+
+bits: 30        possible hashes: 1,073,741,824
+Qld7xzW7U has hash 294f1c12
+hyOfFUwdr has hash 294f1c12
+number of inputs until found: 25,400
+time until found: 0.284562 seconds
+
+
+bits: 32        possible hashes: 4,294,967,296
+sPT6FFCjV has hash f6749d7f
+k1nYPEi5K has hash f6749d7f
+number of inputs until found: 108,089
+time until found: 1.214866 seconds
+
+
+bits: 34        possible hashes: 17,179,869,184
+ztLuxuOVp has hash 2061eee21
+PtCGq3RhN has hash 2061eee21
+number of inputs until found: 110,401
+time until found: 1.215888 seconds
+
+
+bits: 36        possible hashes: 68,719,476,736
+SeHkgkCKl has hash c64b925e6
+VUslwhyLB has hash c64b925e6
+number of inputs until found: 164,505
+time until found: 1.788342 seconds
+
+
+bits: 38        possible hashes: 274,877,906,944
+cX8RjMJLr has hash 2fa4e2e62a
+MocoDPZKz has hash 2fa4e2e62a
+number of inputs until found: 462,470
+time until found: 5.096064 seconds
+
+
+bits: 40        possible hashes: 1,099,511,627,776
+NIq5fkkSc has hash 89ef069584
+6gRnJTOm2 has hash 89ef069584
+number of inputs until found: 1,056,674
+time until found: 11.615019 seconds
+
+
+bits: 42        possible hashes: 4,398,046,511,104
+ffR0sXKyV has hash 21fa186ca64
+j5mCrSkXK has hash 21fa186ca64
+number of inputs until found: 2,016,877
+time until found: 22.225056 seconds
+
+
+bits: 44        possible hashes: 17,592,186,044,416
+jD36Yz7Lk has hash ea76ad2f081
+4rO4b1Er7 has hash ea76ad2f081
+number of inputs until found: 6,452,146
+time until found: 72.121218 seconds
+
+
+bits: 46        possible hashes: 70,368,744,177,664
+LhHLefrKB has hash 2ab5ba5533ab
+IEIelWlYw has hash 2ab5ba5533ab
+number of inputs until found: 12,125,067
+time until found: 137.417025 seconds
+
+
+bits: 48        possible hashes: 281,474,976,710,656
+m3LLTsw9M has hash fa2ef8b86d29
+aTco8ySDv has hash fa2ef8b86d29
+number of inputs until found: 14,935,403
+time until found: 168.709463 seconds
+
+
+bits: 50        possible hashes: 1,125,899,906,842,624
+PVpfwNqgE has hash 2809676e56646
+Kz17fvsmL has hash 2809676e56646
+number of inputs until found: 18,069,235
+time until found: 203.011020 seconds
