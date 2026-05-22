@@ -46,14 +46,11 @@ def main():
 
    #contain extracted user data for decryption
     userList = []
+    for i in lst:
+        userList.append(extract_hash(i))
 
-    test = extract_hash(lst[0])
-
-
-
-
-
-
+    print(userList)
+    
 
 
 
