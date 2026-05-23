@@ -1,9 +1,11 @@
 import time
 import math
-import bcrypt
+from bcrypt import *
 import nltk
 from multiprocessing import Pool, cpu_count
 from nltk.corpus import words
+from userInfo import *
+from operator import itemgetter
 
 nltk.download("words")
 
@@ -31,17 +33,22 @@ def str_convert(text):
 
 ## goal split slat from hash
 def extract_hash(text):
-    User = text.split(':')[0]
-    alg = text.split('$')[1]
-    workFactor = text.split('$')[2]
-    salt = text.split('$')[3][:22]
-    hash = text.split('$')[3][22:]
-
-    return(User,alg,workFactor,salt,hash)
+    newuser = UserInfo(
+        text.split(':')[0],
+        text.split('$')[1],
+        text.split('$')[2],
+        text.split('$')[3][:22],
+        text.split('$')[3][22:],
+        text
+    )
+    return newuser
 
 
 
 def main():
+    print("user indexes 0-14")
+    myindex = input("input indexes to work on, comma separated (1,2,3): ")
+
     lst = str_convert(shadow_text)
 
    #contain extracted user data for decryption
@@ -49,9 +56,30 @@ def main():
     for i in lst:
         userList.append(extract_hash(i))
 
-    print(userList)
-    
+    ## list of all possible passwords
+    word_list = [i for i in words.words() if 6 <= len(i) <= 10]
+    ## user password unfo converted to bytes for checking
 
+    string_list = myindex.split(",")
+    int_list = [int(i) for i in string_list]
+
+    print(int_list)
+
+    print("checking words:")
+
+    myuserList = [x for x in userList if userList.index(x) in int_list]
+
+    for username in myuserList:
+        print("finding password for", username.user)
+        userbytes = bytes(username.userStr.split(":")[1].encode())
+        for i in word_list:
+            if checkpw(bytes(i.encode()), userbytes):
+                print("found password: ")
+                print(i)
+                username.password = i
+                with open("passwords.txt", "a+") as file:
+                    file.write(f"{username.user} : {username.password}")
+                break
 
 
 if __name__ == '__main__':
