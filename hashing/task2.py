@@ -67,7 +67,17 @@ def main():
 
     print("checking words:")
 
+    '''
+    testpassword = "aardvark".encode()
+    testsalt = gensalt()
+    testhash = hashpw(bytes(testpassword), testsalt)
+    testhashstr = "fabian:" + str(testhash.decode())
+    testuser = extract_hash(testhashstr)
+    print(testuser)
+    '''
+    
     myuserList = [x for x in userList if userList.index(x) in int_list]
+    ## myuserList.append(testuser)
 
     for username in myuserList:
         print("finding password for", username.user)
