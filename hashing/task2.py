@@ -70,15 +70,18 @@ def main():
     myuserList = [x for x in userList if userList.index(x) in int_list]
 
     for username in myuserList:
+        start = time.perf_counter()
         print("finding password for", username.user)
         userbytes = bytes(username.userStr.split(":")[1].encode())
         for i in word_list:
             if checkpw(bytes(i.encode()), userbytes):
+                end = time.perf_counter()
+                total = end - start
                 print("found password: ")
                 print(i)
                 username.password = i
-                with open("passwords.txt", "a+") as file:
-                    file.write(f"{username.user} : {username.password}")
+                with open("passwords-time.txt", "a+") as file:
+                    file.write(f"{username.user} : {username.password} : time {total}\n")
                 break
 
 
