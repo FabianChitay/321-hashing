@@ -115,7 +115,7 @@ def main():
             print("found password: ")
             print(password)
             username.password = password
-            with open("passwords-time.txt", "a+") as file:
+            with open("rob-passwords-time.txt", "a+") as file:
                 file.write(f"{username.user} : {username.password} : time {total}\n")
 
         else:
