@@ -1,11 +1,9 @@
 import time
-import math
 from bcrypt import *
 import nltk
 from multiprocessing import Pool, cpu_count
 from nltk.corpus import words
 from userInfo import *
-from operator import itemgetter
 
 nltk.download("words")
 
@@ -44,6 +42,16 @@ def extract_hash(text):
     return newuser
 
 
+def check_chunk(args):
+    chunk, stored_hash = args
+
+    for word in chunk:
+        if checkpw(word.encode(), stored_hash):
+            return word
+
+    return None
+
+
 
 def main():
     print("user indexes 0-14")
@@ -57,33 +65,60 @@ def main():
         userList.append(extract_hash(i))
 
     ## list of all possible passwords
-    word_list = [i for i in words.words() if 6 <= len(i) <= 10]
+    word_list = [
+        i for i in words.words() 
+        if 6 <= len(i) <= 10
+    ]
+
     ## user password unfo converted to bytes for checking
-
     string_list = myindex.split(",")
-    int_list = [int(i) for i in string_list]
 
-    print(int_list)
+    if myindex.strip().lower() == "all":
+        myuserList = userList
+    else:
+        int_list = [int(i) for i in string_list]
+        myuserList = [userList[i] for i in int_list]
 
+    print(myuserList)
     print("checking words:")
-
-    myuserList = [x for x in userList if userList.index(x) in int_list]
-
     for username in myuserList:
         start = time.perf_counter()
         print("finding password for", username.user)
-        userbytes = bytes(username.userStr.split(":")[1].encode())
-        for i in word_list:
-            if checkpw(bytes(i.encode()), userbytes):
-                end = time.perf_counter()
-                total = end - start
-                print("found password: ")
-                print(i)
-                username.password = i
-                with open("passwords-time.txt", "a+") as file:
-                    file.write(f"{username.user} : {username.password} : time {total}\n")
-                break
+        userbytes = username.userStr.split(":")[1].encode()
 
+        cores = cpu_count()
+        chunk_size = max(1, len(word_list) // cores)
+
+        chunks = [
+            word_list[i: i + chunk_size]
+            for i in range(0, len(word_list), chunk_size)
+        ]
+
+        with Pool(cores) as pool:
+            results = pool.map(
+                check_chunk,
+                [(chunk, userbytes) for chunk in chunks]
+            )
+
+        password = None
+
+        for r in results:
+            if r is not None:
+                password = r
+                break
+            
+        if password is not None:
+
+            end = time.perf_counter()
+            total = end - start
+            print("found password: ")
+            print(password)
+            username.password = password
+            with open("passwords-time.txt", "a+") as file:
+                file.write(f"{username.user} : {username.password} : time {total}\n")
+
+        else:
+            print("password not found")
 
 if __name__ == '__main__':
     main()
