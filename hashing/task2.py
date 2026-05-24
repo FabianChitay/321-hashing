@@ -5,7 +5,6 @@ from multiprocessing import Pool, cpu_count
 from nltk.corpus import words
 from userInfo import *
 
-nltk.download("words")
 
 shadow_text = """Bilbo:$2b$08$J9FW66ZdPI2nrIMcOxFYI.qx268uZn.ajhymLP/YHaAsfBGP3Fnmq
 Gandalf:$2b$08$J9FW66ZdPI2nrIMcOxFYI.q2PW6mqALUl2/uFvV9OFNPmHGNPa6YC
@@ -80,13 +79,15 @@ def main():
         myuserList = [userList[i] for i in int_list]
 
     print(myuserList)
-    print("checking words:")
+
     for username in myuserList:
         start = time.perf_counter()
         print("finding password for", username.user)
+        print("checking words:")      
         userbytes = username.userStr.split(":")[1].encode()
 
         cores = cpu_count()
+        print("CPU cores:", cores)
         chunk_size = max(1, len(word_list) // cores)
 
         chunks = [
@@ -121,4 +122,5 @@ def main():
             print("password not found")
 
 if __name__ == '__main__':
+    nltk.download("words")
     main()
