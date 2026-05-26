@@ -4,7 +4,7 @@ import string
 import time
 
 ## a
-def hashinput(text, size = 24):
+def hashinput(text, size = 256):
     text_bytes = str(text).encode()
     hash = SHA256.new(text_bytes)
     truncated = bin(int(hash.hexdigest(), 16))[:size+2] ##convert to binary so we can truncate by 2 bit increments
